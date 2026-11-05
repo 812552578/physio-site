@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhysioCare 物理治疗康复中心</title>
+  <title>Nexus Physio & RMT Head Spa | 专业理疗与头部水疗中心</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.28);
-      --glass-border: rgba(255, 255, 255, 0.45);
-      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
-      --glass-blur: blur(16px);
-      --primary-color: #0d9488;
+      --glass-bg: rgba(255, 255, 255, 0.32);
+      --glass-nav-bg: rgba(255, 255, 255, 0.45);
+      --glass-dropdown-bg: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.55);
+      --glass-shadow: 0 10px 32px 0 rgba(31, 38, 135, 0.12);
+      --glass-blur: blur(18px);
+      --primary: #0d9488;
       --primary-hover: #0f766e;
+      --accent: #0284c7;
       --text-main: #134e4a;
       --text-muted: #3f6260;
     }
@@ -30,54 +33,38 @@
     body {
       min-height: 100vh;
       color: var(--text-main);
-      background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 50%, #f0fdf4 100%);
+      background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 45%, #f0fdf4 100%);
       background-attachment: fixed;
-      padding: 30px 20px;
+      padding: 24px 16px 60px;
       display: flex;
       justify-content: center;
       position: relative;
       overflow-x: hidden;
     }
 
+    /* 弥散光球背景 */
     .blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(85px);
       z-index: 0;
       pointer-events: none;
     }
-    .blob-1 {
-      width: 340px;
-      height: 340px;
-      background: rgba(14, 165, 233, 0.35);
-      top: 5%;
-      left: 10%;
-    }
-    .blob-2 {
-      width: 400px;
-      height: 400px;
-      background: rgba(45, 212, 191, 0.38);
-      top: 45%;
-      right: 5%;
-    }
-    .blob-3 {
-      width: 320px;
-      height: 320px;
-      background: rgba(167, 243, 208, 0.45);
-      bottom: 5%;
-      left: 20%;
-    }
+    .blob-1 { width: 380px; height: 380px; background: rgba(14, 165, 233, 0.32); top: 3%; left: 8%; }
+    .blob-2 { width: 440px; height: 440px; background: rgba(45, 212, 191, 0.35); top: 40%; right: 4%; }
+    .blob-3 { width: 340px; height: 340px; background: rgba(167, 243, 208, 0.42); bottom: 8%; left: 18%; }
 
     .container {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 1100px;
+      max-width: 1160px;
       display: flex;
       flex-direction: column;
       gap: 32px;
     }
 
+    /* 通用毛玻璃卡片 */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
@@ -90,62 +77,199 @@
     }
 
     .glass-card:hover {
-      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.16);
+      box-shadow: 0 14px 44px 0 rgba(31, 38, 135, 0.16);
     }
 
-    .navbar {
+    /* ================= 导航栏与二级下拉菜单 ================= */
+    .header-nav {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      background: var(--glass-nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 20px;
+      box-shadow: 0 8px 28px rgba(31, 38, 135, 0.08);
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 32px;
-      border-radius: 50px;
     }
 
-    .logo {
+    .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.25rem;
-      font-weight: 700;
+      gap: 12px;
+      text-decoration: none;
       color: #0f766e;
+      font-weight: 700;
+      font-size: 1.15rem;
     }
 
-    .logo-icon {
-      width: 34px;
-      height: 34px;
+    .brand-icon {
+      width: 36px;
+      height: 36px;
       background: linear-gradient(135deg, #14b8a6, #0284c7);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-weight: bold;
       font-size: 1.1rem;
+      font-weight: bold;
     }
 
-    .badge {
-      font-size: 0.85rem;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.65);
-      padding: 6px 16px;
-      border-radius: 20px;
+    /* 桌面导航主菜单 */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #134e4a;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-item:hover > .nav-link {
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--primary);
+    }
+
+    .nav-arrow {
+      font-size: 0.65rem;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-item:hover .nav-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* 二级下拉菜单 (Submenu Dropdown) */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 10px 0;
+      margin-top: 8px;
+      min-width: 240px;
+      background: var(--glass-dropdown-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(13, 148, 136, 0.18);
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      color: #134e4a;
+      text-decoration: none;
+      font-size: 0.88rem;
       font-weight: 500;
-      color: #0f766e;
+      transition: all 0.15s ease;
     }
 
+    .dropdown-link:hover {
+      background: rgba(13, 148, 136, 0.1);
+      color: var(--primary);
+      padding-left: 22px;
+    }
+
+    .dropdown-desc {
+      display: block;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .nav-btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+      transition: transform 0.2s;
+    }
+
+    .nav-btn-call:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ================= 特惠横幅 ================= */
+    .promo-banner {
+      background: linear-gradient(135deg, rgba(254, 243, 199, 0.6), rgba(204, 251, 241, 0.6));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #92400e;
+      font-weight: 500;
+    }
+
+    .promo-tag {
+      background: #f59e0b;
+      color: white;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* ================= 主视觉 Banner ================= */
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 36px;
       align-items: center;
     }
 
     .hero-content h1 {
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
       margin-bottom: 16px;
-      background: linear-gradient(120deg, #0f766e, #0369a1);
+      background: linear-gradient(120deg, #0f766e, #0284c7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -157,12 +281,35 @@
       margin-bottom: 24px;
     }
 
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .pill-badge {
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: #0f766e;
+      font-weight: 600;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
     .cta-btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--primary-color), #0284c7);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #ffffff;
-      padding: 14px 28px;
-      font-size: 1rem;
+      padding: 13px 26px;
+      font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
       border-radius: 14px;
@@ -174,110 +321,154 @@
 
     .cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(13, 148, 136, 0.45);
+      box-shadow: 0 6px 22px rgba(13, 148, 136, 0.4);
     }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stat-box {
-      background: rgba(255, 255, 255, 0.35);
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: #0f766e;
-    }
-
-    .stat-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #0f766e;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .service-card {
-      background: rgba(255, 255, 255, 0.28);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 18px;
-      padding: 24px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
+    .cta-btn-outline {
       display: inline-block;
-    }
-
-    .service-card h3 {
-      font-size: 1.15rem;
+      background: rgba(255, 255, 255, 0.4);
+      color: #0f766e;
+      padding: 13px 24px;
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 8px;
-      color: #115e59;
+      text-decoration: none;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      transition: all 0.2s ease;
     }
 
-    .service-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .cta-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.7);
     }
 
-    .booking-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .therapist-info {
+    .info-card-box {
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    .therapist-header {
+    .info-row {
       display: flex;
-      align-items: center;
-      gap: 16px;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: #134e4a;
     }
 
-    .avatar-placeholder {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #99f6e4, #bae6fd);
+    .info-row strong {
+      display: block;
+      color: #0f766e;
+      margin-bottom: 2px;
+    }
+
+    /* ================= 核心 RMT 治疗项目卡片（参考网站定价体系） ================= */
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0f766e;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      border: 2px solid white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      gap: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, background 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .service-top {
+      margin-bottom: 16px;
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .service-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #115e59;
+      margin-bottom: 6px;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .service-bottom {
+      border-top: 1px dashed rgba(15, 118, 110, 0.2);
+      padding-top: 14px;
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-tag {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f766e;
+    }
+
+    .price-duration {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* ================= 头部水疗 Head Spa 模块 ================= */
+    .headspa-banner {
+      background: linear-gradient(135deg, rgba(224, 242, 254, 0.5), rgba(204, 251, 241, 0.5));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* ================= 预约与联系 ================= */
+    .booking-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
     }
 
     .form-group {
@@ -296,149 +487,518 @@
       width: 100%;
       padding: 12px 14px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.65);
       background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(8px);
       outline: none;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #134e4a;
-      transition: border-color 0.2s, background 0.2s;
     }
 
     .form-input:focus {
-      border-color: #0d9488;
-      background: rgba(255, 255, 255, 0.75);
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .booking-section {
-        grid-template-columns: 1fr;
-      }
-      .navbar {
+    /* 移动端菜单切换按钮 */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #0f766e;
+      cursor: pointer;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .booking-section { grid-template-columns: 1fr; }
+      .headspa-banner { grid-template-columns: 1fr; }
+      .mobile-toggle { display: block; }
+      
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        gap: 12px;
+        padding: 16px;
+        border-radius: 18px;
+        margin-top: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .nav-menu.active { display: flex; }
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: rgba(13, 148, 136, 0.05);
+        margin: 6px 0;
+        padding: 6px 12px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- 背景弥散折射圆球 -->
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
   <div class="container">
-    <header class="glass-card navbar">
-      <div class="logo">
-        <div class="logo-icon">✚</div>
-        <span>Nexus Physio | 物理康复理疗</span>
-      </div>
-      <div class="badge">注册执照理疗师 (Registered PT)</div>
+
+    <!-- 顶部导航栏（包含丰富的二级下拉菜单） -->
+    <header class="header-nav">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">✚</div>
+        <span>Nexus Physio & RMT</span>
+      </a>
+
+      <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <!-- 一级菜单 1：首页 -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">首页</a>
+        </li>
+
+        <!-- 一级菜单 2：RMT 理疗服务 (带二级下拉菜单) -->
+        <li class="nav-item">
+          <a class="nav-link">
+            RMT 治疗服务 <span class="nav-arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#swedish" class="dropdown-link">
+                <span>💆‍♂️</span>
+                <div>
+                  <strong>瑞典式舒缓按摩 (Swedish)</strong>
+                  <span class="dropdown-desc">60 / 90 分钟 · 促进全身循环松解</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#hotstone" class="dropdown-link">
+                <span>🔥</span>
+                <div>
+                  <strong>热石疗愈按摩 (Hot Stone)</strong>
+                  <span class="dropdown-desc">深层温热驱寒 · 缓解肌腱僵硬</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#deeptissue" class="dropdown-link">
+                <span>💪</span>
+                <div>
+                  <strong>深层组织理疗 (Deep Tissue)</strong>
+                  <span class="dropdown-desc">前臂精准重压 · 瓦解慢性筋膜粘连</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#lymphatic" class="dropdown-link">
+                <span>🌿</span>
+                <div>
+                  <strong>淋巴排毒消肿 (Lymphatic)</strong>
+                  <span class="dropdown-desc">术后消水肿 · 提升自体代谢免疫</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#aromatherapy" class="dropdown-link">
+                <span>🌸</span>
+                <div>
+                  <strong>芳香精油疗法 (Aromatherapy)</strong>
+                  <span class="dropdown-desc">定制纯天然精油 · 释放神经重压</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#prenatal" class="dropdown-link">
+                <span>🤰</span>
+                <div>
+                  <strong>孕妇产前护理 (Prenatal)</strong>
+                  <span class="dropdown-desc">专业承托靠垫 · 缓解骨盆下腰酸痛</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 一级菜单 3：头部水疗 (Head Spa - 带二级下拉菜单) -->
+        <li class="nav-item">
+          <a class="nav-link">
+            头部水疗 Head Spa <span class="nav-arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#headspa" class="dropdown-link">
+                <span>🚿</span>
+                <div>
+                  <strong>头皮深层净化排毒</strong>
+                  <span class="dropdown-desc">微气泡水循环与毛囊油脂清洁</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#headspa" class="dropdown-link">
+                <span>✨</span>
+                <div>
+                  <strong>助眠减压水疗套餐</strong>
+                  <span class="dropdown-desc">头部经络穴位指压 + 舒缓眼敷</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#headspa" class="dropdown-link">
+                <span>🦶</span>
+                <div>
+                  <strong>Head Spa + 足底按摩组合</strong>
+                  <span class="dropdown-desc">120 分钟秋季特惠体验价 $119</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 一级菜单 4：价格与保险 (带二级下拉菜单) -->
+        <li class="nav-item">
+          <a class="nav-link">
+            价格与保险理赔 <span class="nav-arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#pricing" class="dropdown-link">
+                <span>💲</span>
+                <div>
+                  <strong>RMT 治疗价目表</strong>
+                  <span class="dropdown-desc">60分钟 $145 · 90分钟 $210</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#insurance" class="dropdown-link">
+                <span>📑</span>
+                <div>
+                  <strong>公司商业保险直赔 (Direct Billing)</strong>
+                  <span class="dropdown-desc">Sun Life, Manulife, Canada Life等</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#packages" class="dropdown-link">
+                <span>🎁</span>
+                <div>
+                  <strong>会员日特惠套餐</strong>
+                  <span class="dropdown-desc">周一至周四专享折扣与团购优惠</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 一级菜单 5：关于与门店 (带二级下拉菜单) -->
+        <li class="nav-item">
+          <a class="nav-link">
+            门店与联系 <span class="nav-arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#location" class="dropdown-link">
+                <span>📍</span>
+                <div>
+                  <strong>密西沙加大多旗舰店 (Mississauga)</strong>
+                  <span class="dropdown-desc">160 Traders Blvd E, Unit 118</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#therapist" class="dropdown-link">
+                <span>👨‍⚕️</span>
+                <div>
+                  <strong>执照注册理疗师团队</strong>
+                  <span class="dropdown-desc">CMTO 认证注册按摩治疗师 (RMT)</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#booking" class="dropdown-link">
+                <span>📅</span>
+                <div>
+                  <strong>预约须知与政策</strong>
+                  <span class="dropdown-desc">每日营业时间 1:00 PM – 10:00 PM</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <a href="tel:9054706338" class="nav-btn-call">
+        <span>📞</span> (905) 470-6338
+      </a>
     </header>
 
+    <!-- 特惠通知栏 (参考 headspatoronto.ca 秋季优惠) -->
+    <div class="promo-banner">
+      <div>
+        <span class="promo-tag">季节特惠</span>
+        <strong>Head Spa + 足底按摩 (120 mins) 专享 $119</strong> | 周一至周四特惠 · 团体三人同行享专享折扣
+      </div>
+      <a href="#booking" style="color: #b45309; font-weight: 700; text-decoration: underline;">立即抢订 →</a>
+    </div>
+
+    <!-- 主视觉 Hero -->
     <section class="glass-card hero">
       <div class="hero-content">
-        <h1>重塑身体机能，告别慢性疼痛</h1>
-        <p>基于生物力学评估与循证医学方案，专注脊柱关节康复、运动损伤修复及术后功能重建，量身定制无痛恢复方案。</p>
-        <a href="#booking" class="cta-btn">立即预约评估咨询</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-box">
-          <div class="stat-number">10+ 年</div>
-          <div class="stat-desc">临床康复经验</div>
+        <div class="hero-badges">
+          <span class="pill-badge">安省 CMTO 执业认证</span>
+          <span class="pill-badge">支持公司健康保险直赔</span>
+          <span class="pill-badge">营业至晚间 10:00 PM</span>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">98%</div>
-          <div class="stat-desc">症状改善满意度</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">1对1</div>
-          <div class="stat-desc">私密专享评估</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">保险支持</div>
-          <div class="stat-desc">支持商业健康保险</div>
+        <h1>专业 RMT 注册理疗<br>& 日式头部水疗</h1>
+        <p>汇聚资深注册按摩理疗师（RMT）与日式头皮水疗护理。针对慢性颈椎腰痛、深层筋膜粘连与偏头痛，提供高质感的无痛恢复与减压空间。</p>
+        <div class="btn-group">
+          <a href="#booking" class="cta-btn">在线快速预约</a>
+          <a href="#pricing" class="cta-btn-outline">查看详细价目表</a>
         </div>
       </div>
-    </section>
 
-    <section class="glass-card">
-      <h2 class="section-title">核心理疗与康复方案</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🦴</div>
-          <h3>脊柱与关节理疗</h3>
-          <p>针对颈椎病、腰肌劳损、椎间盘突出及肩周炎的徒手复位与深度肌膜松解。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🏃‍♂️</div>
-          <h3>运动损伤康复</h3>
-          <p>膝关节韧带修复、踝关节扭伤及肌肉拉伤的阶梯式回归运动训练。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🩺</div>
-          <h3>术后功能重建</h3>
-          <p>骨科术后黄金期关节活动度恢复、肌力唤醒与步态纠正训练。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📐</div>
-          <h3>体态评估与纠正</h3>
-          <p>圆肩驼背、骨盆前倾、脊柱侧弯筛查与生物力学校正动作处方。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="booking" class="glass-card booking-section">
-      <div class="therapist-info">
-        <h2 class="section-title">关于主理人</h2>
-        <div class="therapist-header">
-          <div class="avatar-placeholder">👨‍⚕️</div>
+      <div class="info-card-box">
+        <div class="info-row">
+          <span style="font-size: 1.4rem;">📍</span>
           <div>
-            <h3 style="font-size: 1.25rem; color: #0f766e;">Alex Chen, MPT</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">资深物理治疗硕士 / 骨科手法治疗师</p>
+            <strong>大多伦多 / 密西沙加地址</strong>
+            160 Traders Blvd E, Unit 118, Mississauga, ON (建筑后方大型专属停车场)
           </div>
         </div>
-        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-          致力于通过精准动作评估与神经肌肉再教育，从根源消除疼痛诱因，避免反复发作。
-        </p>
-        <div style="font-size: 0.9rem; color: #134e4a; margin-top: 8px; line-height: 1.8;">
-          📍 <strong>诊所地址：</strong> 市中心医疗综合体 B栋 302室<br>
-          🕒 <strong>接诊时间：</strong> 周一至周六 09:00 - 18:30<br>
-          📞 <strong>咨询预约：</strong> (010) 8888-9999
+        <div class="info-row">
+          <span style="font-size: 1.4rem;">🕒</span>
+          <div>
+            <strong>每日接诊营业时间</strong>
+            周一至周日：1:00 PM – 10:00 PM (节假日正常开放)
+          </div>
+        </div>
+        <div class="info-row">
+          <span style="font-size: 1.4rem;">🛡️</span>
+          <div>
+            <strong>医疗保险直报 Direct Billing</strong>
+            出具正规 RMT 保险收据，支持绝大多数商业扩展医疗保险
+          </div>
         </div>
       </div>
-
-      <form onsubmit="handleBooking(event)">
-        <h2 class="section-title" style="font-size: 1.3rem;">预约初诊评估</h2>
-        <div class="form-group">
-          <label>姓名</label>
-          <input type="text" class="form-input" placeholder="您的姓名" required>
-        </div>
-        <div class="form-group">
-          <label>联系电话</label>
-          <input type="tel" class="form-input" placeholder="输入手机号" required>
-        </div>
-        <div class="form-group">
-          <label>主要不适或咨询诉求</label>
-          <select class="form-input">
-            <option>颈肩酸痛 / 头痛</option>
-            <option>腰部不适 / 坐骨神经痛</option>
-            <option>运动拉伤 / 关节扭伤</option>
-            <option>骨科术后康复</option>
-            <option>体态矫正咨询</option>
-          </select>
-        </div>
-        <button type="submit" class="cta-btn" style="width: 100%; border: none; margin-top: 8px;">提交预约申请</button>
-      </form>
     </section>
+
+    <!-- 核心 RMT 治疗服务列表（完全参照 headspatoronto.ca/rmt 体系） -->
+    <section class="glass-card" id="pricing">
+      <div class="section-header">
+        <h2 class="section-title"><span>💆‍♀️</span> RMT 注册治疗师专业项目</h2>
+        <p class="section-subtitle">所有疗程均由安省执照注册按摩治疗师 (RMT) 亲自操作，可开具保险理赔凭证。</p>
+      </div>
+
+      <div class="service-grid">
+        <!-- 1. 瑞典式按摩 -->
+        <div class="service-card" id="swedish">
+          <div class="service-top">
+            <div class="service-icon">🧴</div>
+            <h3 class="service-title">瑞典式舒缓按摩 (Swedish)</h3>
+            <p class="service-desc">经典西方放松疗法。采用长推抚与温和揉捏手法，搭配植物精油，改善体表浅层血液微循环，快速恢复身心活力。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+
+        <!-- 2. 热石理疗 -->
+        <div class="service-card" id="hotstone">
+          <div class="service-top">
+            <div class="service-icon">🌋</div>
+            <h3 class="service-title">热石疗愈按摩 (Hot Stones)</h3>
+            <p class="service-desc">特选平滑天然火山玄武石恒温加热，结合芳香精油渗透深层肌群，驱散寒气与肌肉深层僵直，尤其适合秋冬养护。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+
+        <!-- 3. 深层组织理疗 -->
+        <div class="service-card" id="deeptissue">
+          <div class="service-top">
+            <div class="service-icon">⚡</div>
+            <h3 class="service-title">深层组织理疗 (Deep Tissue)</h3>
+            <p class="service-desc">运用前臂与手肘力量直达深层结缔组织，针对长期慢性颈椎病、肩胛骨酸痛与腰背顽固结节进行精准松解。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+
+        <!-- 4. 淋巴引流排毒 -->
+        <div class="service-card" id="lymphatic">
+          <div class="service-top">
+            <div class="service-icon">🌊</div>
+            <h3 class="service-title">淋巴排毒按摩 (Lymphatic)</h3>
+            <p class="service-desc">轻柔节律性引导手法，刺激浅表淋巴回流，排除机体代谢水肿，非常适合骨科术后恢复期及免疫调节人群。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+
+        <!-- 5. 芳香精油疗法 -->
+        <div class="service-card" id="aromatherapy">
+          <div class="service-top">
+            <div class="service-icon">🍃</div>
+            <h3 class="service-title">芳香精油理疗 (Aromatherapy)</h3>
+            <p class="service-desc">甄选高纯度植物疗愈复方精油，结合神经镇静手法，平衡植物神经与内分泌，释放长期焦虑与脑力疲惫。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+
+        <!-- 6. 孕妇产前按摩 -->
+        <div class="service-card" id="prenatal">
+          <div class="service-top">
+            <div class="service-icon">🍼</div>
+            <h3 class="service-title">孕妇产前护理 (Prenatal)</h3>
+            <p class="service-desc">配备专用孕期支撑护垫与侧卧体位，由经验丰富的理疗师轻柔缓解孕中期及晚期的腰骶酸痛与下肢浮肿。</p>
+          </div>
+          <div class="service-bottom">
+            <div>
+              <div class="price-tag">$145 / $210</div>
+              <div class="price-duration">60 分钟 / 90 分钟</div>
+            </div>
+            <a href="#booking" class="cta-btn" style="padding: 6px 14px; font-size: 0.82rem;">预约</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Head Spa 头部水疗特色模块 -->
+    <section class="glass-card" id="headspa">
+      <div class="headspa-banner">
+        <div>
+          <span class="pill-badge" style="margin-bottom: 12px; display: inline-block;">日式水光循环头疗</span>
+          <h2 style="font-size: 1.8rem; color: #0f766e; margin-bottom: 12px;">头部减压水疗 (Head Spa)</h2>
+          <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px;">
+            结合微气泡头皮清洁瀑布冲洗、纯天然精油深层毛囊去屑、颈肩热敷与面部穴位指压，从头皮发根彻底唤醒身心轻盈感。
+          </p>
+          <div style="font-weight: 700; color: #0f766e; font-size: 1.1rem; margin-bottom: 14px;">
+            会员日 (周一至周四) : <span style="color:#d97706;">$69 / hr</span> | 周末假日: $75 / hr
+          </div>
+          <a href="#booking" class="cta-btn">立即预约头疗</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.4); padding: 24px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.5);">
+          <h4 style="color:#0f766e; margin-bottom: 10px;">头疗体验包含步骤：</h4>
+          <ul style="font-size: 0.88rem; color: #134e4a; line-height: 1.8; list-style-position: inside;">
+            <li>专业头皮健康检测与毛囊放大镜分析</li>
+            <li>草本精油熏蒸与深层角质软化清洁</li>
+            <li>循环温水瀑布光疗淋浴与头皮微循环按摩</li>
+            <li>眼部草本热敷与肩颈精油舒压放松</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 预约表单与地址 -->
+    <section class="glass-card booking-section" id="booking">
+      <div>
+        <h2 class="section-title"><span>📅</span> 预约您的理疗时段</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 8px 0 20px;">
+          如需预约 RMT 理疗师，请务必留下真实姓名与联系电话以生成正式保险预约单。
+        </p>
+
+        <form onsubmit="handleBooking(event)">
+          <div class="form-group">
+            <label>顾客全名 (Full Name)</label>
+            <input type="text" class="form-input" placeholder="例如：Alex Zhang" required>
+          </div>
+          <div class="form-group">
+            <label>联系电话 (Phone Number)</label>
+            <input type="tel" class="form-input" placeholder="(905) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label>选择治疗服务项目</label>
+            <select class="form-input">
+              <option>瑞典式按摩 (Swedish RMT) - 60 mins ($145)</option>
+              <option>热石疗愈按摩 (Hot Stone RMT) - 60 mins ($145)</option>
+              <option>深层组织理疗 (Deep Tissue RMT) - 60 mins ($145)</option>
+              <option>淋巴排毒按摩 (Lymphatic RMT) - 60 mins ($145)</option>
+              <option>芳香精油疗法 (Aromatherapy RMT) - 60 mins ($145)</option>
+              <option>孕妇产前护理 (Prenatal RMT) - 60 mins ($145)</option>
+              <option>Head Spa 头部水疗 + 足底组合 120 mins ($119)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>期望就诊日期与时间</label>
+            <input type="datetime-local" class="form-input" required>
+          </div>
+          <button type="submit" class="cta-btn" style="width: 100%; border: none; margin-top: 10px;">
+            立即提交预约
+          </button>
+        </form>
+      </div>
+
+      <div style="display: flex; flex-direction: column; justify-content: space-between;" id="location">
+        <div>
+          <h2 class="section-title" style="margin-bottom: 12px;"><span>📍</span> 诊所位置与指引</h2>
+          <div style="font-size: 0.92rem; line-height: 1.8; color: var(--text-main);">
+            <strong>地址：</strong> 160 Traders Blvd E, Unit 118, Mississauga, ON<br>
+            <strong>停车指引：</strong> 诊所位于大楼后侧（Back side），请直接驶入后方大型露天停车场即可看到独立入口门牌。<br>
+            <strong>电话预约：</strong> ☎️ <a href="tel:9054706338" style="color:#0f766e; font-weight:700;">(905) 470-6338</a><br>
+            <strong>营业时间：</strong> 周一至周日 1:00 PM – 10:00 PM (节假日正常接诊)
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.4); padding: 18px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.55); margin-top: 20px;">
+          <h4 style="color:#0f766e; margin-bottom: 6px;">💡 保险报销温馨提示</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            我们提供正规 RMT 收据供您的公司商业保险（如 Sun Life、Canada Life、Manulife 等）报销或进行直接理赔 (Direct Billing)。
+          </p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <script>
+    function toggleMobileNav() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+
     function handleBooking(e) {
       e.preventDefault();
-      alert('预约意向已收到！我们的诊所助理将在 2 小时内致电与您确认具体时间。');
+      alert('预约意向已成功接收！我们的前台助理将在 1 小时内致电与您确认预约时段。如有紧急需求可直接拨打 (905) 470-6338。');
     }
   </script>
 </body>
