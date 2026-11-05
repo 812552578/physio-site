@@ -20,7 +20,6 @@
       --glass-shadow: 0 16px 36px 0 rgba(44, 38, 30, 0.06);
       --glass-blur: blur(24px);
       
-      /* 高级奢雅主色调：香槟金、曜石深灰、暖燕麦 */
       --gold-primary: #b68d40;
       --gold-hover: #9e752d;
       --gold-light: #d4af37;
@@ -59,7 +58,6 @@
       align-items: center;
     }
 
-    /* 背景柔和温润光晕（香槟金 & 珍珠乳白） */
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -71,7 +69,6 @@
     .blob-2 { width: 550px; height: 550px; background: rgba(197, 168, 128, 0.18); top: 38%; right: 2%; }
     .blob-3 { width: 450px; height: 450px; background: rgba(230, 215, 190, 0.28); bottom: 5%; left: 12%; }
 
-    /* 流式全屏自适应容器 */
     .app-wrapper {
       position: relative;
       z-index: 1;
@@ -82,7 +79,6 @@
       gap: 28px;
     }
 
-    /* 高级毛玻璃面板 */
     .glass-panel {
       background: var(--glass-card);
       backdrop-filter: var(--glass-blur);
@@ -98,7 +94,7 @@
       box-shadow: 0 20px 48px rgba(44, 38, 30, 0.09);
     }
 
-    /* ================= 顶部黑金流光导航栏 ================= */
+    /* 顶部导航 */
     .header-nav {
       position: sticky;
       top: 12px;
@@ -181,7 +177,6 @@
       transform: rotate(180deg);
     }
 
-    /* 二级下拉子菜单 */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -237,7 +232,7 @@
     .nav-admin-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 8px 16px;
       background: linear-gradient(135deg, #2c261e, #42382c);
       color: #faf5ed;
@@ -253,10 +248,8 @@
     .nav-admin-badge:hover {
       transform: translateY(-2px);
       background: linear-gradient(135deg, #1a1611, #322b22);
-      box-shadow: 0 6px 18px rgba(44, 38, 30, 0.25);
     }
 
-    /* 移动端菜单按钮 */
     .mobile-menu-btn {
       display: none;
       background: rgba(255, 255, 255, 0.7);
@@ -268,7 +261,7 @@
       cursor: pointer;
     }
 
-    /* ================= 高级香槟金按钮与标签 ================= */
+    /* 按钮与徽章 */
     .cta-btn {
       display: inline-block;
       background: linear-gradient(135deg, #b68d40 0%, #8c6a28 100%);
@@ -318,10 +311,8 @@
       border-radius: 20px;
       color: var(--gold-primary);
       font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
-    /* 优雅横幅 */
     .promo-banner {
       background: linear-gradient(135deg, rgba(247, 241, 230, 0.85), rgba(235, 226, 211, 0.85));
       border: 1px solid rgba(214, 199, 178, 0.6);
@@ -417,7 +408,7 @@
       color: var(--gold-primary);
     }
 
-    /* ================= 服务项目卡片 ================= */
+    /* 服务项目 */
     .section-header {
       margin-bottom: 26px;
     }
@@ -534,7 +525,7 @@
       font-weight: 500;
     }
 
-    /* ================= 店铺介绍与环境 ================= */
+    /* 品牌介绍 */
     .about-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -612,7 +603,7 @@
       padding: 20px 12px 10px;
     }
 
-    /* ================= 头部水疗 Head Spa ================= */
+    /* Head Spa */
     .headspa-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -645,7 +636,7 @@
       transform: scale(1.05);
     }
 
-    /* ================= 预约申请表单 ================= */
+    /* 预约布局 */
     .booking-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -682,7 +673,38 @@
       background: rgba(255, 255, 255, 0.95);
     }
 
-    /* ================= 专属预约管理后台 (Admin Dashboard) ================= */
+    /* 预约成功确认通知卡片 */
+    .booking-success-box {
+      display: none;
+      background: #faf8f5;
+      border: 2px solid var(--gold-primary);
+      border-radius: 20px;
+      padding: 24px;
+      margin-top: 16px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .calendar-sync-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4285f4;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 12px;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+      transition: background 0.2s;
+    }
+
+    .calendar-sync-btn:hover {
+      background: #3367d6;
+    }
+
+    /* 店主专属管理后台 */
     .admin-modal {
       display: none;
       position: fixed;
@@ -690,8 +712,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(35, 31, 32, 0.6);
-      backdrop-filter: blur(14px);
+      background: rgba(35, 31, 32, 0.65);
+      backdrop-filter: blur(16px);
       z-index: 9999;
       justify-content: center;
       align-items: center;
@@ -708,8 +730,8 @@
       border-radius: 24px;
       box-shadow: 0 24px 60px rgba(0,0,0,0.25);
       width: 100%;
-      max-width: 960px;
-      max-height: 85vh;
+      max-width: 980px;
+      max-height: 88vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -786,7 +808,18 @@
       text-decoration: underline;
     }
 
-    /* 移动端全响应适配 */
+    /* Google 日历设置区块 */
+    .calendar-config-box {
+      background: #ede5da;
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
@@ -794,6 +827,7 @@
       .booking-layout { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .mobile-menu-btn { display: block; }
+      .calendar-config-box { flex-direction: column; align-items: stretch; }
 
       .nav-menu {
         display: none;
@@ -811,10 +845,7 @@
         border: 1px solid var(--glass-border);
       }
 
-      .nav-menu.active {
-        display: flex;
-      }
-
+      .nav-menu.active { display: flex; }
       .dropdown-menu {
         position: static;
         opacity: 1;
@@ -841,14 +872,13 @@
 </head>
 <body>
 
-  <!-- 背景弥散折射圆球 -->
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
   <div class="app-wrapper">
 
-    <!-- 顶部奢雅黑金毛玻璃导航栏 -->
+    <!-- 顶部导航栏 -->
     <header class="header-nav">
       <div class="brand-logo" onclick="navigateTo('home')">
         <div class="brand-icon font-serif">A</div>
@@ -866,7 +896,6 @@
           <button class="nav-btn" id="btn-about" onclick="navigateTo('about')">品牌介绍与环境</button>
         </li>
 
-        <!-- RMT 治疗服务 (带高级二级下拉菜单) -->
         <li class="nav-item">
           <button class="nav-btn" id="btn-services" onclick="navigateTo('services')">
             RMT 治疗服务 <span class="nav-arrow">▼</span>
@@ -938,9 +967,9 @@
         </li>
       </ul>
 
-      <!-- 店主预约看板按钮（点击直接调出全部预约记录面板） -->
+      <!-- 店主管理与 Google 日历同步看板 -->
       <button class="nav-admin-badge" onclick="openAdminModal()">
-        <span>📋</span> 管理预约订单 (<span id="adminCount">0</span>)
+        <span>📅</span> 预约管理 & 日历 (<span id="adminCount">0</span>)
       </button>
     </header>
 
@@ -955,7 +984,7 @@
       </button>
     </div>
 
-    <!-- ================= 视图模块 1：首页视差 Banner ================= -->
+    <!-- 首页 Banner -->
     <section class="glass-panel hero" id="section-home">
       <div class="hero-content">
         <div class="hero-badges">
@@ -980,7 +1009,7 @@
       </div>
     </section>
 
-    <!-- ================= 视图模块 2：品牌介绍与环境 (About Us) ================= -->
+    <!-- 品牌介绍 (About Us) -->
     <section class="glass-panel" id="section-about">
       <div class="section-header">
         <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 品牌理念与私密空间</h2>
@@ -994,7 +1023,7 @@
             我们打破了传统理疗诊所冰冷刻板的就医体验，以柔和的燕麦香槟暖色与天然原木质感，营建温润的疗愈场域。
           </p>
           <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-muted);">
-            所有主理技师均为安省注册按摩理疗学会 (CMTO) 认证会员，并定期进修神经肌肉激活与肌筋膜释放技术，为每位客户一对一量身制定无痛恢复计划。
+            所有主理技师均为安省注册按摩理疗学会 (CMTO) 认证会员，并定期进修神经肌肉激活与肌筋膜释放技术，量身制定无痛恢复计划。
           </p>
 
           <div class="about-features">
@@ -1031,7 +1060,6 @@
         </div>
       </div>
 
-      <!-- 实景相册展示墙 -->
       <h3 style="font-size: 1.15rem; color: var(--text-title); margin-top: 32px; margin-bottom: 14px;">空间环境品鉴</h3>
       <div class="gallery-grid">
         <div class="gallery-card">
@@ -1049,7 +1077,7 @@
       </div>
     </section>
 
-    <!-- ================= 视图模块 3：RMT 注册理疗服务 ================= -->
+    <!-- 服务项目 -->
     <section class="glass-panel" id="section-services">
       <div class="section-header">
         <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> RMT 注册治疗师核心项目</h2>
@@ -1057,7 +1085,6 @@
       </div>
 
       <div class="service-grid">
-        <!-- 1. 瑞典式按摩 -->
         <div class="service-card" id="item-swedish">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" alt="瑞典式按摩">
@@ -1078,7 +1105,6 @@
           </div>
         </div>
 
-        <!-- 2. 热石按摩 -->
         <div class="service-card" id="item-hotstone">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" alt="热石理疗">
@@ -1099,7 +1125,6 @@
           </div>
         </div>
 
-        <!-- 3. 深层组织理疗 -->
         <div class="service-card" id="item-deeptissue">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" alt="深层组织理疗">
@@ -1120,7 +1145,6 @@
           </div>
         </div>
 
-        <!-- 4. 淋巴引流排毒 -->
         <div class="service-card" id="item-lymphatic">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="淋巴排毒">
@@ -1141,7 +1165,6 @@
           </div>
         </div>
 
-        <!-- 5. 芳香精油疗法 -->
         <div class="service-card" id="item-aromatherapy">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&q=80" alt="芳香精油理疗">
@@ -1162,7 +1185,6 @@
           </div>
         </div>
 
-        <!-- 6. 孕妇产前护理 -->
         <div class="service-card" id="item-prenatal">
           <div class="service-img-wrapper">
             <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="孕妇产前护理">
@@ -1185,7 +1207,7 @@
       </div>
     </section>
 
-    <!-- ================= 视图模块 4：日式头部水疗 Head Spa ================= -->
+    <!-- Head Spa -->
     <section class="glass-panel" id="section-headspa">
       <div class="section-header">
         <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 日式微气泡循环头部水疗 (Head Spa)</h2>
@@ -1223,17 +1245,16 @@
       </div>
     </section>
 
-    <!-- ================= 视图模块 5：在线预约与申请表单 ================= -->
+    <!-- 预约申请模块（直连 Google 日历同步与客人邮件回执） -->
     <section class="glass-panel" id="section-booking">
       <div class="section-header">
-        <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 在线预约初审</h2>
-        <p class="section-subtitle">提交您的就诊意向，所有预约单将实时记录并由专人为您确认时段</p>
+        <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 在线预约初审 & Google 日历直联</h2>
+        <p class="section-subtitle">提交您的就诊意向，系统将直接向店主 Google 日历推送待确认日程，并向您发送预约回执</p>
       </div>
 
       <div class="booking-layout">
         <div>
-          <!-- 预约表单（提交后自动存入店主本地管理库，且支持即时查阅） -->
-          <form onsubmit="handleBookingSubmit(event)">
+          <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
             <div class="form-group">
               <label>顾客全名 (Full Name) *</label>
               <input type="text" class="form-input" id="bookName" placeholder="例如：Alex Zhang" required>
@@ -1243,8 +1264,8 @@
               <input type="tel" class="form-input" id="bookPhone" placeholder="请输入有效电话" required>
             </div>
             <div class="form-group">
-              <label>电子邮箱 (Email Address，用于接收确认函)</label>
-              <input type="email" class="form-input" id="bookEmail" placeholder="yourname@domain.com">
+              <label>电子邮箱 (用于接收 Google 日历邀请与就诊确认通知) *</label>
+              <input type="email" class="form-input" id="bookEmail" placeholder="yourname@gmail.com" required>
             </div>
             <div class="form-group">
               <label>选择治疗服务项目 *</label>
@@ -1259,27 +1280,38 @@
               </select>
             </div>
             <div class="form-group">
-              <label>期望预约日期与时段 *</label>
+              <label>期望就诊日期与时段 *</label>
               <input type="datetime-local" class="form-input" id="bookTime" required>
             </div>
             <div class="form-group">
               <label>特别诉求或健康备注 (选填)</label>
-              <textarea class="form-input" id="bookNotes" rows="2" placeholder="如：肩颈特别酸痛、需要保险理赔单据..."></textarea>
+              <textarea class="form-input" id="bookNotes" rows="2" placeholder="如：肩颈特别酸痛、需要保险理赔收据..."></textarea>
             </div>
-            <button type="submit" class="cta-btn" style="width: 100%; border: none; margin-top: 6px;">
+            <button type="submit" class="cta-btn" id="submitBtn" style="width: 100%; border: none; margin-top: 6px;">
               确认并提交预约申请
             </button>
           </form>
+
+          <!-- 提交成功后呈现给客人的日历卡片 -->
+          <div class="booking-success-box" id="successBox">
+            <h4 style="color:#166534; font-size:1.1rem; margin-bottom: 8px;">🎉 您的预约申请已成功提交！</h4>
+            <p style="font-size:0.88rem; color:var(--text-body); line-height: 1.6;">
+              店主将在 Google 日历上核对时段并确认。我们已为您生成专属的日程链接，点击下方按钮即可一键添加至您的 Google 日历备忘：
+            </p>
+            <a href="#" target="_blank" class="calendar-sync-btn" id="guestGoogleCalBtn">
+              📅 一键添加到我的 Google 日历
+            </a>
+          </div>
         </div>
 
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
           <div style="background: rgba(255,255,255,0.55); padding: 24px; border-radius: 20px; border: 1px solid var(--glass-border);">
-            <h3 class="font-serif" style="color:var(--text-title); margin-bottom: 12px; font-size: 1.25rem;">✨ 预约流程说明</h3>
+            <h3 class="font-serif" style="color:var(--text-title); margin-bottom: 12px; font-size: 1.25rem;">✨ 智能日历确认流程</h3>
             <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-body);">
-              <strong>1. 提交意向：</strong> 在左侧填写您的就诊需求与首选时段。<br>
-              <strong>2. 专属核对：</strong> 我们的接待助理收到申请后将第一时间致电或邮件联系您确认。<br>
-              <strong>3. 到店静享：</strong> 专属理疗套间与热石器材提前完成消杀准备，恭候您的光临。<br>
-              <strong>4. 保险直赔：</strong> 就诊完毕后出具安省正规 CMTO 注册治疗师凭单。
+              <strong>1. 客人提交：</strong> 填选服务与期望时段，提交后自动生成预定记录。<br>
+              <strong>2. 手机日历同步：</strong> 预约单自动流转至店主 Google 日历，手机端弹出待办提醒。<br>
+              <strong>3. 双向确认通知：</strong> 店主在手机点击接受后，系统自动向客人邮箱派送确认函及提醒。<br>
+              <strong>4. 保险直赔：</strong> 到店护理完毕出具安省 CMTO 官方医疗理赔凭单。
             </p>
           </div>
 
@@ -1295,14 +1327,14 @@
 
   </div>
 
-  <!-- ================= 店主专属：预约管理看板模态弹窗 (Admin Dashboard) ================= -->
+  <!-- 店主专属：预约管理看板 & Google 日历绑定弹窗 -->
   <div class="admin-modal" id="adminModal">
     <div class="admin-card">
       <div class="admin-header">
         <div>
-          <h2 class="font-serif" style="font-size: 1.3rem; color: var(--text-title);">📋 客户预约管理看板 (店主后台)</h2>
+          <h2 class="font-serif" style="font-size: 1.3rem; color: var(--text-title);">📋 客户预约管理 & Google 日历中心</h2>
           <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
-            数据实时保存在当前浏览器本地，支持一键导出为 Excel / CSV 格式表格
+            实时同步所有线上预约申请，支持直接导入手机 Google Calendar
           </p>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
@@ -1316,6 +1348,22 @@
       </div>
 
       <div class="admin-body">
+        <!-- Google Apps Script 自动化日历接口设置 -->
+        <div class="calendar-config-box">
+          <div style="flex-grow: 1;">
+            <div style="font-weight: 700; color: var(--text-title); font-size: 0.92rem; margin-bottom: 4px;">
+              🔗 Google Apps Script 自动化日历脚本接入 (可选)
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              填入你的 Google Web App 网址，顾客提交即可直连创建日历日程 + 自动发确认邮件。
+            </div>
+            <input type="url" id="gasUrlInput" class="form-input" style="padding: 8px 12px; margin-top: 8px; font-size: 0.85rem;" placeholder="https://script.google.com/macros/s/.../exec">
+          </div>
+          <button class="cta-btn" style="padding: 10px 18px; font-size: 0.85rem; white-space: nowrap;" onclick="saveGasUrl()">
+            保存绑定
+          </button>
+        </div>
+
         <div id="noBookingsMsg" style="text-align: center; padding: 40px 0; color: var(--text-muted); display: none;">
           <p style="font-size: 1.1rem; margin-bottom: 6px;">暂无新的预约订单</p>
           <p style="font-size: 0.85rem;">客户在前端填写的预约申请将自动显示在这里。</p>
@@ -1329,7 +1377,8 @@
               <th>联系电话</th>
               <th>预约项目</th>
               <th>期望就诊时段</th>
-              <th>状态</th>
+              <th>处理状态</th>
+              <th>手机 Google 日历</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -1341,26 +1390,36 @@
     </div>
   </div>
 
-  <!-- ================= 交互与管理逻辑 ================= -->
+  <!-- 业务逻辑处理脚本 -->
   <script>
-    // 本地存储键名
     const STORAGE_KEY = 'AURA_BOOKINGS_LIST';
+    const GAS_URL_KEY = 'AURA_GAS_URL';
 
-    // 获取现有预约数据
     function getBookings() {
       const data = localStorage.getItem(STORAGE_KEY);
       return data ? JSON.parse(data) : [];
     }
 
-    // 保存预约数据
     function saveBookings(list) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       updateAdminBadge();
     }
 
-    // 页面加载初始化
+    function getGasUrl() {
+      return localStorage.getItem(GAS_URL_KEY) || '';
+    }
+
+    function saveGasUrl() {
+      const val = document.getElementById('gasUrlInput').value.trim();
+      localStorage.setItem(GAS_URL_KEY, val);
+      alert('✅ Google 日历 Web App 接口已保存！');
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      // 预填充一条演示示例（若为空）
+      const savedGas = getGasUrl();
+      const inputEl = document.getElementById('gasUrlInput');
+      if (inputEl && savedGas) inputEl.value = savedGas;
+
       let list = getBookings();
       if (list.length === 0) {
         list.push({
@@ -1380,16 +1439,40 @@
       }
     });
 
-    // 更新导航栏订单数字
     function updateAdminBadge() {
       const list = getBookings();
       const countEl = document.getElementById('adminCount');
       if (countEl) countEl.innerText = list.length;
     }
 
-    // 客户提交表单处理
-    function handleBookingSubmit(e) {
+    // 生成 Google 日历一键添加链接 (带标题、详细说明、客人姓名电话)
+    function buildGoogleCalendarUrl(booking) {
+      const title = encodeURIComponent(`[待确认预约] ${booking.service} - ${booking.name}`);
+      const details = encodeURIComponent(`客户姓名: ${booking.name}\n联系电话: ${booking.phone}\n电子邮箱: ${booking.email}\n预约项目: ${booking.service}\n健康备注: ${booking.notes}\n状态: ${booking.status}`);
+      
+      let startIso = "";
+      let endIso = "";
+      if (booking.time && booking.time.includes('-')) {
+        const d = new Date(booking.time.replace(' ', 'T'));
+        if (!isNaN(d.getTime())) {
+          const pad = n => String(n).padStart(2, '0');
+          startIso = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+          const endD = new Date(d.getTime() + 60 * 60 * 1000);
+          endIso = `${endD.getFullYear()}${pad(endD.getMonth()+1)}${pad(endD.getDate())}${pad(endD.getHours())}${pad(endD.getMinutes())}00`;
+        }
+      }
+      
+      const datesParam = (startIso && endIso) ? `&dates=${startIso}/${endIso}` : '';
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}${datesParam}`;
+    }
+
+    // 顾客表单提交
+    async function handleBookingSubmit(e) {
       e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.innerText = '正在同步 Google 日历...';
+      submitBtn.disabled = true;
+
       const name = document.getElementById('bookName').value.trim();
       const phone = document.getElementById('bookPhone').value.trim();
       const email = document.getElementById('bookEmail').value.trim();
@@ -1402,30 +1485,51 @@
         submitAt: new Date().toLocaleString(),
         name,
         phone,
-        email: email || "未填",
+        email,
         service,
         time: time ? time.replace('T', ' ') : '待定',
         notes: notes || "无",
         status: "待确认"
       };
 
+      // 1. 本地存储备份
       const list = getBookings();
       list.unshift(newBooking);
       saveBookings(list);
 
-      // 重置表单
-      e.target.reset();
+      // 2. 如果配置了 Google Apps Script Web App，则发送 HTTP POST
+      const gasUrl = getGasUrl();
+      if (gasUrl) {
+        try {
+          await fetch(gasUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newBooking)
+          });
+        } catch (err) {
+          console.warn('Google Script 自动推送提示:', err);
+        }
+      }
 
-      alert('🎉 预约申请已成功提交！\n\n顾客：' + name + '\n电话：' + phone + '\n项目：' + service + '\n\n我们的理疗助理将尽快与您联系确认。店主可点击右上角【管理预约订单】实时查看！');
+      // 3. 生成给客人的日历一键添加按钮
+      const calUrl = buildGoogleCalendarUrl(newBooking);
+      const guestCalBtn = document.getElementById('guestGoogleCalBtn');
+      guestCalBtn.href = calUrl;
+
+      // 展开成功卡片
+      document.getElementById('successBox').style.display = 'block';
+      submitBtn.innerText = '确认并提交预约申请';
+      submitBtn.disabled = false;
+      document.getElementById('bookingForm').reset();
     }
 
-    // 打开管理后台弹窗
+    // 打开管理后台看板
     function openAdminModal() {
       renderBookingsTable();
       document.getElementById('adminModal').classList.add('active');
     }
 
-    // 关闭管理后台弹窗
     function closeAdminModal() {
       document.getElementById('adminModal').classList.remove('active');
     }
@@ -1447,9 +1551,11 @@
       table.style.display = 'table';
       emptyMsg.style.display = 'none';
 
-      list.forEach((item, index) => {
+      list.forEach((item) => {
         const tr = document.createElement('tr');
         const isConfirmed = item.status === '已确认';
+        const calUrl = buildGoogleCalendarUrl(item);
+
         tr.innerHTML = `
           <td style="color:#7c746b; font-size:0.8rem;">${item.submitAt}</td>
           <td><strong>${item.name}</strong></td>
@@ -1460,6 +1566,11 @@
             <span class="badge-status ${isConfirmed ? 'badge-confirmed' : 'badge-pending'}">
               ${item.status}
             </span>
+          </td>
+          <td>
+            <a href="${calUrl}" target="_blank" style="display:inline-flex; align-items:center; gap:4px; padding:4px 10px; background:#4285f4; color:white; border-radius:8px; text-decoration:none; font-size:0.76rem; font-weight:600;">
+              📅 加到 Google 日历
+            </a>
           </td>
           <td>
             <button class="admin-btn-action" onclick="toggleStatus(${item.id})">
@@ -1474,7 +1585,6 @@
       });
     }
 
-    // 切换预约状态
     function toggleStatus(id) {
       let list = getBookings();
       list = list.map(item => {
@@ -1487,7 +1597,6 @@
       renderBookingsTable();
     }
 
-    // 删除预约记录
     function deleteBooking(id) {
       if (confirm('确定要删除这条预约记录吗？')) {
         let list = getBookings();
@@ -1497,7 +1606,6 @@
       }
     }
 
-    // 导出 CSV 表格
     function exportBookingsToCSV() {
       const list = getBookings();
       if (list.length === 0) {
@@ -1520,7 +1628,6 @@
       document.body.removeChild(link);
     }
 
-    // 页面跳转函数
     function navigateTo(targetId) {
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
       const activeBtn = document.getElementById('btn-' + targetId);
@@ -1535,7 +1642,6 @@
       if (navMenu) navMenu.classList.remove('active');
     }
 
-    // 二级菜单直达特定服务
     function jumpToService(serviceId) {
       navigateTo('services');
       setTimeout(() => {
@@ -1550,7 +1656,6 @@
       }, 300);
     }
 
-    // 快捷选中某项目并跳转预约
     function selectServiceBooking(serviceName) {
       const select = document.getElementById('bookService');
       if (select) {
@@ -1564,7 +1669,6 @@
       navigateTo('booking');
     }
 
-    // 移动端菜单切换
     function toggleMobileNav() {
       const menu = document.getElementById('navMenu');
       menu.classList.toggle('active');
