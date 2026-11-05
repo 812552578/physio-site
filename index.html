@@ -14,7 +14,7 @@
       --bg-gradient: linear-gradient(135deg, #f7f5f0 0%, #ebe6dc 50%, #f3efe6 100%);
       --glass-panel: rgba(255, 255, 255, 0.55);
       --glass-card: rgba(255, 255, 255, 0.65);
-      --glass-nav: rgba(250, 248, 245, 0.85);
+      --glass-nav: rgba(250, 248, 245, 0.88);
       --glass-dropdown: rgba(255, 255, 255, 0.95);
       --glass-border: rgba(214, 199, 178, 0.45);
       --glass-shadow: 0 16px 36px 0 rgba(44, 38, 30, 0.06);
@@ -22,7 +22,6 @@
       
       --gold-primary: #b68d40;
       --gold-hover: #9e752d;
-      --gold-light: #d4af37;
       --text-title: #231f20;
       --text-body: #4a453f;
       --text-muted: #7c746b;
@@ -94,7 +93,7 @@
       box-shadow: 0 20px 48px rgba(44, 38, 30, 0.09);
     }
 
-    /* 顶部导航 */
+    /* 顶部导航栏（面向客人的纯净奢雅界面，绝无任何管理后台入口暴露） */
     .header-nav {
       position: sticky;
       top: 12px;
@@ -120,6 +119,7 @@
       font-weight: 700;
       font-size: 1.2rem;
       cursor: pointer;
+      user-select: none;
     }
 
     .brand-icon {
@@ -139,7 +139,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       list-style: none;
     }
 
@@ -151,7 +151,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 15px;
+      padding: 9px 16px;
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--text-title);
@@ -229,25 +229,25 @@
       margin-top: 2px;
     }
 
-    .nav-admin-badge {
+    .nav-cta-booking {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #2c261e, #42382c);
-      color: #faf5ed;
-      font-size: 0.86rem;
+      gap: 6px;
+      padding: 9px 18px;
+      background: linear-gradient(135deg, var(--gold-primary), #8c6a28);
+      color: #ffffff;
+      font-size: 0.9rem;
       font-weight: 600;
       border-radius: 12px;
+      text-decoration: none;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(44, 38, 30, 0.15);
-      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(182, 141, 64, 0.3);
+      transition: transform 0.2s;
     }
 
-    .nav-admin-badge:hover {
+    .nav-cta-booking:hover {
       transform: translateY(-2px);
-      background: linear-gradient(135deg, #1a1611, #322b22);
     }
 
     .mobile-menu-btn {
@@ -408,7 +408,7 @@
       color: var(--gold-primary);
     }
 
-    /* 服务项目 */
+    /* 服务项目卡片 */
     .section-header {
       margin-bottom: 26px;
     }
@@ -603,7 +603,7 @@
       padding: 20px 12px 10px;
     }
 
-    /* Head Spa */
+    /* 头部水疗 Head Spa */
     .headspa-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -636,10 +636,10 @@
       transform: scale(1.05);
     }
 
-    /* 预约布局 */
+    /* ================= 预约排期区块（支持官方 Google 日历无缝嵌入与纯净表单） ================= */
     .booking-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 34px;
     }
 
@@ -673,7 +673,6 @@
       background: rgba(255, 255, 255, 0.95);
     }
 
-    /* 预约成功确认通知卡片 */
     .booking-success-box {
       display: none;
       background: #faf8f5;
@@ -681,7 +680,6 @@
       border-radius: 20px;
       padding: 24px;
       margin-top: 16px;
-      animation: fadeIn 0.4s ease;
     }
 
     .calendar-sync-btn {
@@ -704,41 +702,48 @@
       background: #3367d6;
     }
 
-    /* 店主专属管理后台 */
-    .admin-modal {
+    /* Google 官方预约日程内嵌容器（当配置了官方预约链接时自动展示） */
+    #googleScheduleFrameContainer {
+      display: none;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* ================= 私密店主隐形控制台（仅店主通过双击 Logo 呼出，客人绝不可见） ================= */
+    .owner-secret-modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(35, 31, 32, 0.65);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(35, 31, 32, 0.75);
       backdrop-filter: blur(16px);
-      z-index: 9999;
+      z-index: 99999;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
 
-    .admin-modal.active {
+    .owner-secret-modal.active {
       display: flex;
     }
 
-    .admin-card {
+    .owner-secret-card {
       background: #faf8f5;
       border: 1px solid rgba(214, 199, 178, 0.8);
       border-radius: 24px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
       width: 100%;
-      max-width: 980px;
-      max-height: 88vh;
+      max-width: 960px;
+      max-height: 85vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
     .admin-header {
-      padding: 20px 28px;
+      padding: 18px 24px;
       border-bottom: 1px solid #e7dfd5;
       display: flex;
       justify-content: space-between;
@@ -747,7 +752,7 @@
     }
 
     .admin-body {
-      padding: 24px 28px;
+      padding: 24px;
       overflow-y: auto;
       flex-grow: 1;
     }
@@ -785,15 +790,8 @@
       font-weight: 600;
     }
 
-    .badge-pending {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .badge-confirmed {
-      background: #dcfce7;
-      color: #166534;
-    }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-confirmed { background: #dcfce7; color: #166534; }
 
     .admin-btn-action {
       background: none;
@@ -804,22 +802,6 @@
       margin-right: 8px;
     }
 
-    .admin-btn-action:hover {
-      text-decoration: underline;
-    }
-
-    /* Google 日历设置区块 */
-    .calendar-config-box {
-      background: #ede5da;
-      border-radius: 16px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
@@ -827,14 +809,12 @@
       .booking-layout { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .mobile-menu-btn { display: block; }
-      .calendar-config-box { flex-direction: column; align-items: stretch; }
 
       .nav-menu {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
+        left: 0; right: 0;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(28px);
         flex-direction: column;
@@ -848,11 +828,8 @@
       .nav-menu.active { display: flex; }
       .dropdown-menu {
         position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: none;
+        opacity: 1; visibility: visible; transform: none;
+        box-shadow: none; border: none;
         background: rgba(182, 141, 64, 0.06);
         margin: 6px 0 12px;
         padding: 8px 12px;
@@ -878,9 +855,10 @@
 
   <div class="app-wrapper">
 
-    <!-- 顶部导航栏 -->
+    <!-- 顶部导航栏（对外纯客端，完全不显示管理入口） -->
     <header class="header-nav">
-      <div class="brand-logo" onclick="navigateTo('home')">
+      <!-- 店主暗门：双击左上角品牌 Logo 即可弹出密码输入框登录店主后台 -->
+      <div class="brand-logo" ondblclick="triggerOwnerLogin()" title="AURA">
         <div class="brand-icon font-serif">A</div>
         <span class="font-serif">AURA PHYSIO & SPA</span>
       </div>
@@ -915,7 +893,7 @@
                 <span>🌋</span>
                 <div>
                   <strong>热石疗愈按摩 (Hot Stone)</strong>
-                  <span class="dropdown-desc">平滑天然火山岩恒温温润透穴</span>
+                  <span class="dropdown-desc">天然火山岩恒温温润透穴</span>
                 </div>
               </div>
             </li>
@@ -924,7 +902,7 @@
                 <span>⚡</span>
                 <div>
                   <strong>深层组织理疗 (Deep Tissue)</strong>
-                  <span class="dropdown-desc">精准前臂重压 · 瓦解深层筋膜结节</span>
+                  <span class="dropdown-desc">瓦解慢性肌肉劳损与筋膜结节</span>
                 </div>
               </div>
             </li>
@@ -933,7 +911,7 @@
                 <span>🌿</span>
                 <div>
                   <strong>淋巴排毒按摩 (Lymphatic)</strong>
-                  <span class="dropdown-desc">轻柔节律消水肿 · 提升自体代谢</span>
+                  <span class="dropdown-desc">术后消水肿 · 提升自体代谢</span>
                 </div>
               </div>
             </li>
@@ -942,7 +920,7 @@
                 <span>🌸</span>
                 <div>
                   <strong>芳香精油疗法 (Aromatherapy)</strong>
-                  <span class="dropdown-desc">高级定制纯植物精油 · 神经减压</span>
+                  <span class="dropdown-desc">植物复方精油 · 神经减压</span>
                 </div>
               </div>
             </li>
@@ -967,9 +945,8 @@
         </li>
       </ul>
 
-      <!-- 店主管理与 Google 日历同步看板 -->
-      <button class="nav-admin-badge" onclick="openAdminModal()">
-        <span>📅</span> 预约管理 & 日历 (<span id="adminCount">0</span>)
+      <button class="nav-cta-booking" onclick="navigateTo('booking')">
+        <span>📅</span> 立即预约
       </button>
     </header>
 
@@ -1245,14 +1222,19 @@
       </div>
     </section>
 
-    <!-- 预约申请模块（直连 Google 日历同步与客人邮件回执） -->
+    <!-- 纯净预约申请模块（客人端界面） -->
     <section class="glass-panel" id="section-booking">
       <div class="section-header">
-        <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 在线预约初审 & Google 日历直联</h2>
-        <p class="section-subtitle">提交您的就诊意向，系统将直接向店主 Google 日历推送待确认日程，并向您发送预约回执</p>
+        <h2 class="section-title"><span style="color:var(--gold-primary);">✦</span> 在线预约初审</h2>
+        <p class="section-subtitle">提交您的就诊意向，所有预约单将实时推送至理疗师排期，并为您发送预约回执</p>
       </div>
 
-      <div class="booking-layout">
+      <!-- 如果店主配置了 Google Calendar 官方预约日程 URL，则无缝内嵌官方预约日历 -->
+      <div id="googleScheduleFrameContainer">
+        <iframe id="googleScheduleIframe" src="" style="border: 0; width: 100%; height: 680px;" frameborder="0"></iframe>
+      </div>
+
+      <div class="booking-layout" id="defaultBookingLayout">
         <div>
           <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
             <div class="form-group">
@@ -1261,10 +1243,10 @@
             </div>
             <div class="form-group">
               <label>联系电话 (Phone Number) *</label>
-              <input type="tel" class="form-input" id="bookPhone" placeholder="请输入有效电话" required>
+              <input type="tel" class="form-input" id="bookPhone" placeholder="请输入有效联系电话" required>
             </div>
             <div class="form-group">
-              <label>电子邮箱 (用于接收 Google 日历邀请与就诊确认通知) *</label>
+              <label>电子邮箱 (用于接收预约确认通知与日历邀请) *</label>
               <input type="email" class="form-input" id="bookEmail" placeholder="yourname@gmail.com" required>
             </div>
             <div class="form-group">
@@ -1296,7 +1278,7 @@
           <div class="booking-success-box" id="successBox">
             <h4 style="color:#166534; font-size:1.1rem; margin-bottom: 8px;">🎉 您的预约申请已成功提交！</h4>
             <p style="font-size:0.88rem; color:var(--text-body); line-height: 1.6;">
-              店主将在 Google 日历上核对时段并确认。我们已为您生成专属的日程链接，点击下方按钮即可一键添加至您的 Google 日历备忘：
+              理疗师已在 Google 日历上收到您的预约申请。点击下方按钮即可一键将本次就诊日程添加至您的手机 Google 日历：
             </p>
             <a href="#" target="_blank" class="calendar-sync-btn" id="guestGoogleCalBtn">
               📅 一键添加到我的 Google 日历
@@ -1306,11 +1288,11 @@
 
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
           <div style="background: rgba(255,255,255,0.55); padding: 24px; border-radius: 20px; border: 1px solid var(--glass-border);">
-            <h3 class="font-serif" style="color:var(--text-title); margin-bottom: 12px; font-size: 1.25rem;">✨ 智能日历确认流程</h3>
+            <h3 class="font-serif" style="color:var(--text-title); margin-bottom: 12px; font-size: 1.25rem;">✨ 预约流程说明</h3>
             <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-body);">
-              <strong>1. 客人提交：</strong> 填选服务与期望时段，提交后自动生成预定记录。<br>
-              <strong>2. 手机日历同步：</strong> 预约单自动流转至店主 Google 日历，手机端弹出待办提醒。<br>
-              <strong>3. 双向确认通知：</strong> 店主在手机点击接受后，系统自动向客人邮箱派送确认函及提醒。<br>
+              <strong>1. 在线提交：</strong> 填选心仪服务与期望时段，提交后系统即刻留档。<br>
+              <strong>2. 手机日历排期：</strong> 预约信息即时推送到主理治疗师日程排期中。<br>
+              <strong>3. 确认通知：</strong> 治疗师在日历中确认后，确认信函将直达您的电子邮箱。<br>
               <strong>4. 保险直赔：</strong> 到店护理完毕出具安省 CMTO 官方医疗理赔凭单。
             </p>
           </div>
@@ -1327,72 +1309,81 @@
 
   </div>
 
-  <!-- 店主专属：预约管理看板 & Google 日历绑定弹窗 -->
-  <div class="admin-modal" id="adminModal">
-    <div class="admin-card">
+  <!-- ================= 只有店主知道的专属后台暗门 (客人完全不知道也不可见) ================= -->
+  <div class="owner-secret-modal" id="ownerSecretModal">
+    <div class="owner-secret-card">
       <div class="admin-header">
         <div>
-          <h2 class="font-serif" style="font-size: 1.3rem; color: var(--text-title);">📋 客户预约管理 & Google 日历中心</h2>
+          <h2 class="font-serif" style="font-size: 1.25rem; color: var(--text-title);">🔒 店主专属管理中心 (不对外公开)</h2>
           <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
-            实时同步所有线上预约申请，支持直接导入手机 Google Calendar
+            此处仅您本人可见，客人无法访问或篡改。
           </p>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
           <button class="cta-btn" style="padding: 7px 16px; font-size: 0.82rem;" onclick="exportBookingsToCSV()">
-            📥 导出表格 (CSV)
+            📥 导出所有预约表格 (CSV)
           </button>
-          <button onclick="closeAdminModal()" style="background:none; border:none; font-size: 1.4rem; cursor: pointer; color: var(--text-title);">
+          <button onclick="closeOwnerModal()" style="background:none; border:none; font-size: 1.4rem; cursor: pointer; color: var(--text-title);">
             ✕
           </button>
         </div>
       </div>
 
       <div class="admin-body">
-        <!-- Google Apps Script 自动化日历接口设置 -->
-        <div class="calendar-config-box">
-          <div style="flex-grow: 1;">
-            <div style="font-weight: 700; color: var(--text-title); font-size: 0.92rem; margin-bottom: 4px;">
-              🔗 Google Apps Script 自动化日历脚本接入 (可选)
-            </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">
-              填入你的 Google Web App 网址，顾客提交即可直连创建日历日程 + 自动发确认邮件。
-            </div>
-            <input type="url" id="gasUrlInput" class="form-input" style="padding: 8px 12px; margin-top: 8px; font-size: 0.85rem;" placeholder="https://script.google.com/macros/s/.../exec">
+        <!-- Google Calendar 官方预约日程链接或 Web App 脚本绑定 -->
+        <div style="background:#ede5da; padding:18px; border-radius:16px; margin-bottom:20px;">
+          <div style="font-weight:700; color:var(--text-title); font-size:0.92rem; margin-bottom:6px;">
+            📅 方案一：嵌入 Google 官方日历预约排期 (推荐)
           </div>
-          <button class="cta-btn" style="padding: 10px 18px; font-size: 0.85rem; white-space: nowrap;" onclick="saveGasUrl()">
-            保存绑定
-          </button>
+          <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+            在你的电脑版 Google 日历左上角点击【创建 ➔ 预约安排 (Appointment schedule)】，复制生成的预约网址粘贴在下方。
+            配置后，前台预约区将直接化身为你官方的 Google 日历预约界面，客人选时间自动写入你手机日历！
+          </p>
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <input type="url" id="googleScheduleUrlInput" class="form-input" style="padding:8px 12px; font-size:0.85rem;" placeholder="https://calendar.google.com/calendar/appointments/schedules/...">
+            <button class="cta-btn" style="padding:8px 16px; font-size:0.82rem; white-space:nowrap;" onclick="saveGoogleScheduleUrl()">
+              保存生效
+            </button>
+          </div>
         </div>
 
-        <div id="noBookingsMsg" style="text-align: center; padding: 40px 0; color: var(--text-muted); display: none;">
-          <p style="font-size: 1.1rem; margin-bottom: 6px;">暂无新的预约订单</p>
-          <p style="font-size: 0.85rem;">客户在前端填写的预约申请将自动显示在这里。</p>
+        <div style="background:#f4eee5; padding:16px; border-radius:16px; margin-bottom:20px;">
+          <div style="font-weight:700; color:var(--text-title); font-size:0.92rem; margin-bottom:4px;">
+            ⚙️ 方案二：Google Apps Script 自动发信脚本 (可选)
+          </div>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="url" id="gasScriptUrlInput" class="form-input" style="padding:8px 12px; font-size:0.85rem;" placeholder="https://script.google.com/macros/s/.../exec">
+            <button class="cta-btn" style="padding:8px 16px; font-size:0.82rem; white-space:nowrap;" onclick="saveGasScriptUrl()">
+              保存脚本
+            </button>
+          </div>
         </div>
 
+        <h3 style="font-size:1.05rem; color:var(--text-title); margin-bottom:12px;">实时预约订单列表</h3>
         <table class="admin-table" id="bookingsTable">
           <thead>
             <tr>
               <th>提交时间</th>
               <th>客户姓名</th>
-              <th>联系电话</th>
-              <th>预约项目</th>
-              <th>期望就诊时段</th>
-              <th>处理状态</th>
+              <th>电话</th>
+              <th>邮箱</th>
+              <th>项目</th>
+              <th>就诊时间</th>
+              <th>状态</th>
               <th>手机 Google 日历</th>
               <th>操作</th>
             </tr>
           </thead>
-          <tbody id="bookingsTbody">
-            <!-- 动态注入数据 -->
-          </tbody>
+          <tbody id="bookingsTbody"></tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- 业务逻辑处理脚本 -->
+  <!-- 业务逻辑 -->
   <script>
     const STORAGE_KEY = 'AURA_BOOKINGS_LIST';
+    const GOOGLE_SCHEDULE_KEY = 'AURA_GOOGLE_SCHEDULE_URL';
     const GAS_URL_KEY = 'AURA_GAS_URL';
 
     function getBookings() {
@@ -1402,30 +1393,29 @@
 
     function saveBookings(list) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-      updateAdminBadge();
     }
 
-    function getGasUrl() {
-      return localStorage.getItem(GAS_URL_KEY) || '';
-    }
-
-    function saveGasUrl() {
-      const val = document.getElementById('gasUrlInput').value.trim();
-      localStorage.setItem(GAS_URL_KEY, val);
-      alert('✅ Google 日历 Web App 接口已保存！');
-    }
-
+    // 页面初始化检测是否嵌入了官方 Google 预约日程
     window.addEventListener('DOMContentLoaded', () => {
-      const savedGas = getGasUrl();
-      const inputEl = document.getElementById('gasUrlInput');
-      if (inputEl && savedGas) inputEl.value = savedGas;
+      const scheduleUrl = localStorage.getItem(GOOGLE_SCHEDULE_KEY);
+      if (scheduleUrl) {
+        const frameContainer = document.getElementById('googleScheduleFrameContainer');
+        const iframe = document.getElementById('googleScheduleIframe');
+        const defaultLayout = document.getElementById('defaultBookingLayout');
+        if (frameContainer && iframe && defaultLayout) {
+          iframe.src = scheduleUrl;
+          frameContainer.style.display = 'block';
+          defaultLayout.style.display = 'none';
+        }
+      }
 
+      // 初始化一条演示数据
       let list = getBookings();
       if (list.length === 0) {
         list.push({
           id: Date.now(),
           submitAt: new Date().toLocaleString(),
-          name: "王女士 (示例)",
+          name: "王女士 (演示)",
           phone: "416-888-9999",
           email: "sample@email.com",
           service: "热石疗愈按摩 (Hot Stone RMT) - 60 mins ($145)",
@@ -1434,35 +1424,60 @@
           status: "待确认"
         });
         saveBookings(list);
-      } else {
-        updateAdminBadge();
       }
     });
 
-    function updateAdminBadge() {
-      const list = getBookings();
-      const countEl = document.getElementById('adminCount');
-      if (countEl) countEl.innerText = list.length;
+    // 店主暗门：双击左上角 Logo 触发密码登录
+    function triggerOwnerLogin() {
+      const pwd = prompt("【店主专属验证】请输入管理密码（默认：aura888）：");
+      if (pwd === "aura888" || pwd === "admin") {
+        openOwnerModal();
+      } else if (pwd !== null) {
+        alert("密码错误，无法进入管理中心！");
+      }
     }
 
-    // 生成 Google 日历一键添加链接 (带标题、详细说明、客人姓名电话)
+    // 打开店主后台
+    function openOwnerModal() {
+      document.getElementById('googleScheduleUrlInput').value = localStorage.getItem(GOOGLE_SCHEDULE_KEY) || '';
+      document.getElementById('gasScriptUrlInput').value = localStorage.getItem(GAS_URL_KEY) || '';
+      renderBookingsTable();
+      document.getElementById('ownerSecretModal').classList.add('active');
+    }
+
+    function closeOwnerModal() {
+      document.getElementById('ownerSecretModal').classList.remove('active');
+    }
+
+    function saveGoogleScheduleUrl() {
+      const val = document.getElementById('googleScheduleUrlInput').value.trim();
+      localStorage.setItem(GOOGLE_SCHEDULE_KEY, val);
+      alert('✅ 官方 Google 日历预约日程已保存！页面刷新后将展示官方预约界面。');
+      location.reload();
+    }
+
+    function saveGasScriptUrl() {
+      const val = document.getElementById('gasScriptUrlInput').value.trim();
+      localStorage.setItem(GAS_URL_KEY, val);
+      alert('✅ 自动发信脚本已保存！');
+    }
+
+    // 生成 Google 日历一键添加链接
     function buildGoogleCalendarUrl(booking) {
-      const title = encodeURIComponent(`[待确认预约] ${booking.service} - ${booking.name}`);
-      const details = encodeURIComponent(`客户姓名: ${booking.name}\n联系电话: ${booking.phone}\n电子邮箱: ${booking.email}\n预约项目: ${booking.service}\n健康备注: ${booking.notes}\n状态: ${booking.status}`);
+      const title = encodeURIComponent(`[AURA理疗预约] ${booking.service} - ${booking.name}`);
+      const details = encodeURIComponent(`客户: ${booking.name}\n电话: ${booking.phone}\n邮箱: ${booking.email}\n项目: ${booking.service}\n备注: ${booking.notes}`);
       
-      let startIso = "";
-      let endIso = "";
+      let datesParam = "";
       if (booking.time && booking.time.includes('-')) {
         const d = new Date(booking.time.replace(' ', 'T'));
         if (!isNaN(d.getTime())) {
           const pad = n => String(n).padStart(2, '0');
-          startIso = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+          const startIso = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
           const endD = new Date(d.getTime() + 60 * 60 * 1000);
-          endIso = `${endD.getFullYear()}${pad(endD.getMonth()+1)}${pad(endD.getDate())}${pad(endD.getHours())}${pad(endD.getMinutes())}00`;
+          const endIso = `${endD.getFullYear()}${pad(endD.getMonth()+1)}${pad(endD.getDate())}${pad(endD.getHours())}${pad(endD.getMinutes())}00`;
+          datesParam = `&dates=${startIso}/${endIso}`;
         }
       }
-      
-      const datesParam = (startIso && endIso) ? `&dates=${startIso}/${endIso}` : '';
       return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}${datesParam}`;
     }
 
@@ -1470,7 +1485,7 @@
     async function handleBookingSubmit(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submitBtn');
-      submitBtn.innerText = '正在同步 Google 日历...';
+      submitBtn.innerText = '正在提交...';
       submitBtn.disabled = true;
 
       const name = document.getElementById('bookName').value.trim();
@@ -1492,13 +1507,13 @@
         status: "待确认"
       };
 
-      // 1. 本地存储备份
+      // 保存至本地安全库
       const list = getBookings();
       list.unshift(newBooking);
       saveBookings(list);
 
-      // 2. 如果配置了 Google Apps Script Web App，则发送 HTTP POST
-      const gasUrl = getGasUrl();
+      // 如果店主设置了 Apps Script 自动直连脚本，则静默推送
+      const gasUrl = localStorage.getItem(GAS_URL_KEY);
       if (gasUrl) {
         try {
           await fetch(gasUrl, {
@@ -1507,78 +1522,43 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newBooking)
           });
-        } catch (err) {
-          console.warn('Google Script 自动推送提示:', err);
-        }
+        } catch (err) {}
       }
 
-      // 3. 生成给客人的日历一键添加按钮
-      const calUrl = buildGoogleCalendarUrl(newBooking);
-      const guestCalBtn = document.getElementById('guestGoogleCalBtn');
-      guestCalBtn.href = calUrl;
-
-      // 展开成功卡片
+      // 给客人生成 Google 日历一键添加链接
+      document.getElementById('guestGoogleCalBtn').href = buildGoogleCalendarUrl(newBooking);
       document.getElementById('successBox').style.display = 'block';
       submitBtn.innerText = '确认并提交预约申请';
       submitBtn.disabled = false;
       document.getElementById('bookingForm').reset();
     }
 
-    // 打开管理后台看板
-    function openAdminModal() {
-      renderBookingsTable();
-      document.getElementById('adminModal').classList.add('active');
-    }
-
-    function closeAdminModal() {
-      document.getElementById('adminModal').classList.remove('active');
-    }
-
-    // 渲染管理表格
+    // 渲染店主后台表格
     function renderBookingsTable() {
       const list = getBookings();
       const tbody = document.getElementById('bookingsTbody');
-      const table = document.getElementById('bookingsTable');
-      const emptyMsg = document.getElementById('noBookingsMsg');
-
       tbody.innerHTML = '';
-      if (list.length === 0) {
-        table.style.display = 'none';
-        emptyMsg.style.display = 'block';
-        return;
-      }
 
-      table.style.display = 'table';
-      emptyMsg.style.display = 'none';
-
-      list.forEach((item) => {
+      list.forEach(item => {
         const tr = document.createElement('tr');
         const isConfirmed = item.status === '已确认';
         const calUrl = buildGoogleCalendarUrl(item);
-
         tr.innerHTML = `
           <td style="color:#7c746b; font-size:0.8rem;">${item.submitAt}</td>
           <td><strong>${item.name}</strong></td>
-          <td><a href="tel:${item.phone}" style="color:var(--gold-primary); text-decoration:none; font-weight:600;">${item.phone}</a></td>
-          <td style="font-size:0.84rem;">${item.service}</td>
+          <td><a href="tel:${item.phone}" style="color:var(--gold-primary); font-weight:600; text-decoration:none;">${item.phone}</a></td>
+          <td style="font-size:0.82rem;">${item.email}</td>
+          <td style="font-size:0.82rem;">${item.service}</td>
           <td style="font-weight:600;">${item.time}</td>
+          <td><span class="badge-status ${isConfirmed ? 'badge-confirmed' : 'badge-pending'}">${item.status}</span></td>
           <td>
-            <span class="badge-status ${isConfirmed ? 'badge-confirmed' : 'badge-pending'}">
-              ${item.status}
-            </span>
-          </td>
-          <td>
-            <a href="${calUrl}" target="_blank" style="display:inline-flex; align-items:center; gap:4px; padding:4px 10px; background:#4285f4; color:white; border-radius:8px; text-decoration:none; font-size:0.76rem; font-weight:600;">
-              📅 加到 Google 日历
+            <a href="${calUrl}" target="_blank" style="padding:4px 8px; background:#4285f4; color:white; border-radius:6px; text-decoration:none; font-size:0.75rem;">
+              📅 导入日历
             </a>
           </td>
           <td>
-            <button class="admin-btn-action" onclick="toggleStatus(${item.id})">
-              ${isConfirmed ? '设为待确认' : '标记已确认'}
-            </button>
-            <button class="admin-btn-action" style="color:#b91c1c;" onclick="deleteBooking(${item.id})">
-              删除
-            </button>
+            <button class="admin-btn-action" onclick="toggleStatus(${item.id})">${isConfirmed ? '设为待审' : '标记确认'}</button>
+            <button class="admin-btn-action" style="color:#b91c1c;" onclick="deleteBooking(${item.id})">删除</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1586,11 +1566,8 @@
     }
 
     function toggleStatus(id) {
-      let list = getBookings();
-      list = list.map(item => {
-        if (item.id === id) {
-          item.status = item.status === '已确认' ? '待确认' : '已确认';
-        }
+      let list = getBookings().map(item => {
+        if (item.id === id) item.status = item.status === '已确认' ? '待确认' : '已确认';
         return item;
       });
       saveBookings(list);
@@ -1598,9 +1575,8 @@
     }
 
     function deleteBooking(id) {
-      if (confirm('确定要删除这条预约记录吗？')) {
-        let list = getBookings();
-        list = list.filter(item => item.id !== id);
+      if (confirm('确认删除此预约记录？')) {
+        let list = getBookings().filter(item => item.id !== id);
         saveBookings(list);
         renderBookingsTable();
       }
@@ -1608,24 +1584,16 @@
 
     function exportBookingsToCSV() {
       const list = getBookings();
-      if (list.length === 0) {
-        alert('当前没有可导出的预约记录！');
-        return;
-      }
-
+      if (list.length === 0) return alert('暂无预约数据！');
       let csv = "\uFEFF提交时间,客户姓名,联系电话,电子邮箱,预约项目,期望就诊时段,客户备注,处理状态\n";
-      list.forEach(item => {
-        csv += `"${item.submitAt}","${item.name}","${item.phone}","${item.email}","${item.service}","${item.time}","${item.notes}","${item.status}"\n`;
+      list.forEach(i => {
+        csv += `"${i.submitAt}","${i.name}","${i.phone}","${i.email}","${i.service}","${i.time}","${i.notes}","${i.status}"\n`;
       });
-
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.setAttribute("href", url);
-      link.setAttribute("download", "AURA_预约申请列表_" + new Date().toISOString().slice(0, 10) + ".csv");
-      document.body.appendChild(link);
+      link.href = URL.createObjectURL(blob);
+      link.download = "AURA_预约列表_" + new Date().toISOString().slice(0, 10) + ".csv";
       link.click();
-      document.body.removeChild(link);
     }
 
     function navigateTo(targetId) {
@@ -1634,9 +1602,7 @@
       if (activeBtn) activeBtn.classList.add('active');
 
       const targetEl = document.getElementById('section-' + targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       const navMenu = document.getElementById('navMenu');
       if (navMenu) navMenu.classList.remove('active');
@@ -1649,9 +1615,7 @@
         if (item) {
           item.scrollIntoView({ behavior: 'smooth', block: 'center' });
           item.style.boxShadow = '0 0 0 3px #b68d40, 0 16px 40px rgba(182,141,64,0.3)';
-          setTimeout(() => {
-            item.style.boxShadow = '';
-          }, 1800);
+          setTimeout(() => item.style.boxShadow = '', 1800);
         }
       }, 300);
     }
@@ -1670,8 +1634,7 @@
     }
 
     function toggleMobileNav() {
-      const menu = document.getElementById('navMenu');
-      menu.classList.toggle('active');
+      document.getElementById('navMenu').classList.toggle('active');
     }
   </script>
 </body>
