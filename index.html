@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhysioCare 物理治疗康复中心</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.28);
+      --glass-border: rgba(255, 255, 255, 0.45);
+      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+      --glass-blur: blur(16px);
+      --primary-color: #0d9488;
+      --primary-hover: #0f766e;
+      --text-main: #134e4a;
+      --text-muted: #3f6260;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text-main);
+      background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 50%, #f0fdf4 100%);
+      background-attachment: fixed;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 340px;
+      height: 340px;
+      background: rgba(14, 165, 233, 0.35);
+      top: 5%;
+      left: 10%;
+    }
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(45, 212, 191, 0.38);
+      top: 45%;
+      right: 5%;
+    }
+    .blob-3 {
+      width: 320px;
+      height: 320px;
+      background: rgba(167, 243, 208, 0.45);
+      bottom: 5%;
+      left: 20%;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      padding: 32px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card:hover {
+      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.16);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      border-radius: 50px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f766e;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #14b8a6, #0284c7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .badge {
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+      color: #0f766e;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      background: linear-gradient(120deg, #0f766e, #0369a1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), #0284c7);
+      color: #ffffff;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.3);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(13, 148, 136, 0.45);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.35);
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0f766e;
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #0f766e;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 18px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #115e59;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .booking-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .therapist-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .therapist-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #99f6e4, #bae6fd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 2px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #134e4a;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(8px);
+      outline: none;
+      font-size: 0.95rem;
+      color: #134e4a;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: #0d9488;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .booking-section {
+        grid-template-columns: 1fr;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container">
+    <header class="glass-card navbar">
+      <div class="logo">
+        <div class="logo-icon">✚</div>
+        <span>Nexus Physio | 物理康复理疗</span>
+      </div>
+      <div class="badge">注册执照理疗师 (Registered PT)</div>
+    </header>
+
+    <section class="glass-card hero">
+      <div class="hero-content">
+        <h1>重塑身体机能，告别慢性疼痛</h1>
+        <p>基于生物力学评估与循证医学方案，专注脊柱关节康复、运动损伤修复及术后功能重建，量身定制无痛恢复方案。</p>
+        <a href="#booking" class="cta-btn">立即预约评估咨询</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-number">10+ 年</div>
+          <div class="stat-desc">临床康复经验</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">98%</div>
+          <div class="stat-desc">症状改善满意度</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">1对1</div>
+          <div class="stat-desc">私密专享评估</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">保险支持</div>
+          <div class="stat-desc">支持商业健康保险</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card">
+      <h2 class="section-title">核心理疗与康复方案</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🦴</div>
+          <h3>脊柱与关节理疗</h3>
+          <p>针对颈椎病、腰肌劳损、椎间盘突出及肩周炎的徒手复位与深度肌膜松解。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏃‍♂️</div>
+          <h3>运动损伤康复</h3>
+          <p>膝关节韧带修复、踝关节扭伤及肌肉拉伤的阶梯式回归运动训练。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🩺</div>
+          <h3>术后功能重建</h3>
+          <p>骨科术后黄金期关节活动度恢复、肌力唤醒与步态纠正训练。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📐</div>
+          <h3>体态评估与纠正</h3>
+          <p>圆肩驼背、骨盆前倾、脊柱侧弯筛查与生物力学校正动作处方。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="glass-card booking-section">
+      <div class="therapist-info">
+        <h2 class="section-title">关于主理人</h2>
+        <div class="therapist-header">
+          <div class="avatar-placeholder">👨‍⚕️</div>
+          <div>
+            <h3 style="font-size: 1.25rem; color: #0f766e;">Alex Chen, MPT</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">资深物理治疗硕士 / 骨科手法治疗师</p>
+          </div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+          致力于通过精准动作评估与神经肌肉再教育，从根源消除疼痛诱因，避免反复发作。
+        </p>
+        <div style="font-size: 0.9rem; color: #134e4a; margin-top: 8px; line-height: 1.8;">
+          📍 <strong>诊所地址：</strong> 市中心医疗综合体 B栋 302室<br>
+          🕒 <strong>接诊时间：</strong> 周一至周六 09:00 - 18:30<br>
+          📞 <strong>咨询预约：</strong> (010) 8888-9999
+        </div>
+      </div>
+
+      <form onsubmit="handleBooking(event)">
+        <h2 class="section-title" style="font-size: 1.3rem;">预约初诊评估</h2>
+        <div class="form-group">
+          <label>姓名</label>
+          <input type="text" class="form-input" placeholder="您的姓名" required>
+        </div>
+        <div class="form-group">
+          <label>联系电话</label>
+          <input type="tel" class="form-input" placeholder="输入手机号" required>
+        </div>
+        <div class="form-group">
+          <label>主要不适或咨询诉求</label>
+          <select class="form-input">
+            <option>颈肩酸痛 / 头痛</option>
+            <option>腰部不适 / 坐骨神经痛</option>
+            <option>运动拉伤 / 关节扭伤</option>
+            <option>骨科术后康复</option>
+            <option>体态矫正咨询</option>
+          </select>
+        </div>
+        <button type="submit" class="cta-btn" style="width: 100%; border: none; margin-top: 8px;">提交预约申请</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    function handleBooking(e) {
+      e.preventDefault();
+      alert('预约意向已收到！我们的诊所助理将在 2 小时内致电与您确认具体时间。');
+    }
+  </script>
+</body>
+</html>
